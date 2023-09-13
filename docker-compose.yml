@@ -1,0 +1,42 @@
+volumes:
+  database_log:
+  database_data:
+  database_secrets:
+  mysql_database_data:
+  postgresql_database_data:
+
+services:
+  mssqlserver-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes:
+      - database_log:/log:/var/opt/mssql/log
+      - database_data:/data:/var/opt/mssql/data
+      - database_secrets:/secrets:/var/opt/mssql/secrets
+    environment:
+      MSSQL_SA_PASSWORD: "Qwer@1234"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+
+  mysql-db:
+    image: mysql
+    volumes:
+      - mysql_database_data:/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Qwer@1234'
+      MYSQL_DATABASE: BrazilianCities
+      MYSQL_USER: jotape
+      MYSQL_PASSWORD: 'Qwer@1234'
+    ports:
+      - "3306:3306"
+
+  postgresql-db:
+    image: postgres:15.3-alpine
+    volumes:
+      - postgresql_database_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'jotape'
+      POSTGRES_PASSWORD: 'Qwer@1234'
+    ports:
+      - 5432:5432
