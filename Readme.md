@@ -3,6 +3,8 @@
 
 Aplicação ASP .Net Core MVC para testar o uso da biblioteca [FluentMigrator](https://fluentmigrator.github.io/)
 
+Feito com base neste tutorial [Dapper Migrations Fluentmigrator Aspnet Core](https://code-maze.com/dapper-migrations-fluentmigrator-aspnetcore/)
+
 ## Configuração Bando de Dados
 
 Caso use Docker pode subir as instâncias MySQL, PostgreSQL e SQL Server basta rodar o comando:
